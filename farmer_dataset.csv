@@ -1,0 +1,7 @@
+intent,patterns,response
+crop_disease,What is the treatment for leaf blight in rice?|How to cure rice leaf blight?|പച്ചില രോഗം വന്നാൽ എന്ത് ചെയ്യണം?,Rice leaf blight can be controlled by spraying recommended fungicides like Tricyclazole. നെല്ലിൽ പച്ചില രോഗത്തിന് ട്രൈസൈക്ലാസോൾ പോലുള്ള ഫംഗിസൈഡ് സ്പ്രേ ചെയ്യണം.
+fertilizer,Which fertilizer is best for tomato?|How much urea for tomato plants?|തക്കാളിക്ക് ഏത് വളം?,"Tomatoes need a balanced fertilizer rich in nitrogen, phosphorus, and potassium. Use NPK 19:19:19. തക്കാളിക്ക് NPK 19:19:19 പോലുള്ള സംയുക്ത വളം ഉപയോഗിക്കുക."
+weather,Will it rain tomorrow?|Tomorrow weather forecast?|നാളെ മഴയുണ്ടാകുമോ?,You can check tomorrow’s weather forecast from IMD official site or our app. നാളത്തെ കാലാവസ്ഥ IMD വെബ്സൈറ്റിൽ പരിശോധിക്കാം.
+market_price,What is the current price of paddy?|How much is rice per kg?|നെല്ലിന്റെ വില എത്ര?,The current market price of paddy is ₹22 per kg. ഇപ്പോഴത്തെ നെല്ല് വില കിലോയ്ക്ക് ₹22 ആണ്.
+greetings,Hi|Hello|നമസ്കാരം,Hello farmer! How can I help you today? നമസ്കാരം! ഞാൻ എന്ത് സഹായം ചെയ്യാം?
+goodbye,Bye|Thank you|വിട|നന്ദി,Thank you! Wishing you a good harvest! നന്ദി! നല്ല വിളവ് ആശംസിക്കുന്നു!

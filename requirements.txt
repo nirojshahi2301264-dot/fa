@@ -1,0 +1,6 @@
+flask
+sentence-transformers
+faiss-cpu
+numpy
+googletrans==4.0.0-rc1
+tensorflow

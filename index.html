@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Farmer Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    #chatbot-btn {
+      position: fixed; bottom: 20px; right: 20px;
+      width: 70px; height: 70px;
+      border-radius: 50%; background: #4CAF50; color: white;
+      border: none; cursor: pointer; font-size: 30px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    #chat-container {
+      position: fixed; bottom: 100px; right: 20px;
+      width: 350px; height: 450px; background: #fff;
+      border: 1px solid #ccc; border-radius: 10px;
+      display: none; flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    #chatBox {
+      flex: 1; padding: 10px; overflow-y: auto; font-size: 14px;
+    }
+    .user { color: #333; margin: 5px 0; }
+    .bot { color: #4CAF50; margin: 5px 0; font-weight: bold; }
+    #input-area { display: flex; border-top: 1px solid #ccc; }
+    #userMessage { flex: 1; padding: 10px; border: none; outline: none; }
+    #sendBtn { padding: 10px; border: none; background: #4CAF50; color: white; cursor: pointer; }
+  </style>
+  <script>
+    function toggleChat() {
+      const chat = document.getElementById("chat-container");
+      chat.style.display = (chat.style.display === "none" || chat.style.display === "") ? "flex" : "none";
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("userMessage");
+      const message = input.value.trim();
+      if (!message) return;
+
+      document.getElementById("chatBox").innerHTML += `<div class="user">👨‍🌾 You: ${message}</div>`;
+      input.value = "";
+
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message})
+      });
+      const data = await res.json();
+
+      document.getElementById("chatBox").innerHTML += `<div class="bot">🤖 Bot: ${data.response}</div>`;
+    }
+
+    async function uploadImage() {
+      const file = document.getElementById("fileInput").files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("lang", "en");
+
+      const res = await fetch("/predict", {method: "POST", body: formData});
+      const data = await res.json();
+
+      document.getElementById("chatBox").innerHTML += `<div class="bot">🌱 Prediction:<br>${data.response.replace(/\n/g, '<br>')}</div>`;
+    }
+  </script>
+</head>
+<body>
+  <button id="chatbot-btn" onclick="toggleChat()">🤖</button>
+  <div id="chat-container">
+    <div id="chatBox"></div>
+    <div id="input-area">
+      <input type="text" id="userMessage" placeholder="Type your message...">
+      <button id="sendBtn" onclick="sendMessage()">Send</button>
+    </div>
+    <div style="padding: 10px;">
+      <input type="file" id="fileInput">
+      <button onclick="uploadImage()">Predict Disease</button>
+    </div>
+  </div>
+</body>
+</html>
